@@ -1,0 +1,11 @@
+.list-item {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.done {
+    text-decoration: line-through;
+}
