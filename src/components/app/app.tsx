@@ -1,4 +1,5 @@
-import React, { Dispatch, useEffect, useState } from 'react';
+import React = require('react');
+import { Dispatch, useEffect, useState } from 'react';
 import ItemList from '../item-list';
 import { connect } from 'react-redux';
 import { dataSuccess, addText } from '../actions/actions';

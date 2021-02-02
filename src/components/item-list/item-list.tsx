@@ -1,4 +1,5 @@
-import React, { Dispatch, useState } from 'react';
+import React = require('react');
+import { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 import { deleteTask } from '../actions/actions';
 import './item-list.css';

@@ -10,7 +10,7 @@ const initialState: IAppState = {
     addText: ''
 };
 
-let maxId = 4;
+let maxId: number = 4;
 
 type item = {
     id: number,
