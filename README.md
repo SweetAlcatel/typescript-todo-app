@@ -1,4 +1,4 @@
-# TypeScript + React + Redux + Babel + Webpack 4
+# TypeScript + React + Redux + Babel + Webpack 5
 
 ## Credits
 Based on the amazing work done by 
