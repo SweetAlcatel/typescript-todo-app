@@ -1,7 +1,7 @@
 # TypeScript + React + Redux + Babel + Webpack 5
 
 ## Credits
-Based on the amazing work done by 
+Based on the work done by 
 Dmitriy Sharapov - mrneey@gmail.com
 
 ## Development
