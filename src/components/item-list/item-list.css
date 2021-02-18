@@ -1,5 +1,5 @@
 .list-item {
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -8,4 +8,10 @@
 
 .done {
     text-decoration: line-through;
+    text-decoration-color: black;
+}
+
+.important {
+    color: red;
+    font-weight: bold;
 }
