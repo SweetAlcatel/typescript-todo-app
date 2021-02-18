@@ -1,8 +1,9 @@
 import React = require('react');
 import { Dispatch, useEffect, useState } from 'react';
 import ItemList from '../item-list';
+import ToDoCounter from '../todo-counter';
 import { connect } from 'react-redux';
-import { dataSuccess, addText } from '../actions/actions';
+import { dataSuccess, dataSuccessProps, addText, addTextProps } from '../actions/actions';
 import './app.css';
 
 interface AppProps {
@@ -37,11 +38,12 @@ const App = ({ data, addText, dataSuccess }: AppProps) => {
     }, [ dataSuccess ]);
 
     return (
-        <div className='app'>
+    <div className='app'>
         <div className='form-1'>
             <input className='form-control' onChange={trackingChanges} value={value} />
             <button type="submit" className="btn btn-outline-secondary" onClick={createItem}>Add</button>
         </div>
+        <ToDoCounter />
         <div>
             {
                 data.map((item: item) => {
@@ -65,7 +67,7 @@ const mapStateToProps = ({ items, addText }: stateProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch<dataSuccessProps | addTextProps>) => {
     return {
         dataSuccess: () => {
             dispatch(dataSuccess())
