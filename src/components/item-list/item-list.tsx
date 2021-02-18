@@ -1,13 +1,14 @@
 import React = require('react');
 import { Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
-import { deleteTask } from '../actions/actions';
+import { deleteTask, deleteTaskProps } from '../actions/actions';
 import './item-list.css';
 
 interface ItemListrops {
+    items: Array<item>
     id: number,
     item: string,
-    deleteTask: any
+    deleteTask: any,
 };
 
 type item = {
@@ -18,28 +19,28 @@ type item = {
 
 const ItemList = ({ id, item, deleteTask }: ItemListrops) => {
 
+    let classNames = 'list-item list-group-item';
+
     const [done, setDone] = useState(false);
 
-    const onToggleMark = () => {
-        setDone(true);
-        if(done === true) {
-            setDone(false);
-        };
+    const [important, setImportant] = useState(false);
+
+    if(done) {
+        classNames += ' done';  
     };
 
-    let classNames = 'list-item list-group-item';
-    
-    if(done) {
-        classNames += ' done'
-    }
+    if(important) {
+        classNames += ' important';
+    };
 
     return (
         <ul className="list-group">
             <li key={id} className={classNames}>
                 {item}
                 <div>
-                    <button className='btn btn-primary btn-sm' type="button" onClick={onToggleMark}>done</button>
-                    <button className="btn btn-outline-danger btn-sm" onClick={() => deleteTask(id)} type='button'>delete</button>
+                    <button className='btn btn-primary btn-sm' type='button' onClick={() => setDone(prevState => !prevState)}>done</button>
+                    <button type="button" className='btn btn-sm btn-secondary' onClick={() => setImportant(prevState => !prevState)} >priority</button>
+                    <button className='btn btn-outline-danger btn-sm' onClick={() => deleteTask(id)} type='button'>delete</button>
                 </div>
             </li>
         </ul>
@@ -56,7 +57,7 @@ const mapStateToProps = (state: stateProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch<deleteTaskProps>) => {
     return {
         deleteTask: (id: number) => {
             dispatch(deleteTask(id))
