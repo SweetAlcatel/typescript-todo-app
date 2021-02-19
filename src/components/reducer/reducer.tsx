@@ -58,6 +58,20 @@ const reducer = (state = initialState, action: actionsProps) => {
                 ...state,
                 items: deleteTask
             };  
+        case 'DONE_ITEM':
+
+            return {
+                ...state,
+                items: state.items.map((item: item) => {
+                  if(item.id === action.itemId) {
+                    return {
+                      ...item,
+                      done: !item.done
+                    }
+                  }
+                  return item;
+                })
+              };
         default:
             return state;
     }   

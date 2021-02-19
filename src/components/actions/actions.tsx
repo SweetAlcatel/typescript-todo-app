@@ -2,6 +2,7 @@ export interface actionsProps {
     type: string,
     payload: string,
     buttonId: number,
+    itemId: number
 };
 
 export interface dataSuccessProps {
@@ -18,6 +19,11 @@ export interface deleteTaskProps {
     buttonId: number
 };
 
+export interface doneItemProps {
+    type: string,
+    itemId: number
+};
+
 
 const dataSuccess = () => {
     return {
@@ -32,6 +38,13 @@ const addText = (payload: string) => {
     };
 };
 
+const doneItem = (itemId: number) => {
+    return {
+        type: 'DONE_ITEM',
+        itemId
+    };
+};
+
 const deleteTask = (buttonId: number) => {
     return {
         type: 'DELETE_ITEM',
@@ -42,5 +55,6 @@ const deleteTask = (buttonId: number) => {
 export {
     dataSuccess,
     addText,
+    doneItem,
     deleteTask,
 };
