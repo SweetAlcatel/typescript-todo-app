@@ -15,7 +15,8 @@ interface AppProps {
 type item = {
     id: number,
     label: string,
-    done: boolean
+    done: boolean,
+    important: boolean
 };
 
 
@@ -47,7 +48,7 @@ const App = ({ data, addText, dataSuccess }: AppProps) => {
         <div>
             {
                 data.map((item: item) => {
-                    return <ItemList item={item.label} id={item.id} />
+                    return <ItemList label={item.label} id={item.id} />
                 })
             }
         </div>

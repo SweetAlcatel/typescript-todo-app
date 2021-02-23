@@ -5,8 +5,9 @@ import './todo-counter.css';
 type item = {
     id: number,
     label: string,
-    done: boolean
-}
+    done: boolean,
+    important: boolean
+};
 
 interface ToDoProps {
     items: Array<item>
@@ -14,13 +15,15 @@ interface ToDoProps {
 
 const ToDoCounter = ({ items }: ToDoProps) => {
 
-    const tasks = items.length;
-    
+    const completeTask = items.filter((item: item) => item.done === true ? item : null);
+
+    const tasks = items.length - completeTask.length;
 
     return (
         <div className='todo-panel'>
-            <p>All tasks: {tasks} tasks</p>
-            <p>complete: 2 task</p>
+            <p>All task(s): {tasks}</p>
+            <p>|</p>
+            <p>Complete task(s): {completeTask.length}</p>
         </div>
     );
 };

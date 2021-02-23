@@ -15,7 +15,8 @@ let maxId: number = 4;
 type item = {
     id: number,
     label: string,
-    done: boolean
+    done: boolean,
+    important: boolean
 };
 
 const reducer = (state = initialState, action: actionsProps) => {
@@ -24,9 +25,9 @@ const reducer = (state = initialState, action: actionsProps) => {
             return {
                 ...state,
                 items: [
-                    {id: 1, label: 'Create react app', done: false},
-                    {id: 2, label: 'Drink a cup of tea', done: false},
-                    {id: 3, label: 'Play Dota', done: false}
+                    {id: 1, label: 'Create react app', done: false, important: false},
+                    {id: 2, label: 'Drink a cup of tea', done: false, important: false},
+                    {id: 3, label: 'Play Dota', done: false, important: false}
                 ]
             }
         case 'ADD_ITEM': 
@@ -59,7 +60,6 @@ const reducer = (state = initialState, action: actionsProps) => {
                 items: deleteTask
             };  
         case 'DONE_ITEM':
-
             return {
                 ...state,
                 items: state.items.map((item: item) => {
@@ -72,6 +72,19 @@ const reducer = (state = initialState, action: actionsProps) => {
                   return item;
                 })
               };
+        case 'IMPORTANT_ITEM':
+            return {
+                ...state,
+                items: state.items.map((item: item) => {
+                    if(item.id === action.itemId) {
+                        return {
+                            ...item,
+                            important: !item.important
+                        }
+                    }
+                    return item;
+                })
+            }
         default:
             return state;
     }   
