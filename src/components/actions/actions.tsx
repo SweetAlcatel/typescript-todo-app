@@ -19,7 +19,7 @@ export interface deleteTaskProps {
     buttonId: number
 };
 
-export interface doneItemProps {
+export interface doneAndImportantItemProps {
     type: string,
     itemId: number
 };
@@ -45,6 +45,13 @@ const doneItem = (itemId: number) => {
     };
 };
 
+const importantItem = (itemId: number) => {
+    return {
+        type: 'IMPORTANT_ITEM',
+        itemId
+    };
+};
+
 const deleteTask = (buttonId: number) => {
     return {
         type: 'DELETE_ITEM',
@@ -56,5 +63,6 @@ export {
     dataSuccess,
     addText,
     doneItem,
+    importantItem,
     deleteTask,
 };
